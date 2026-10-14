@@ -11,6 +11,31 @@ This project is released under the [MIT License](LICENSE). The license covers th
 - Curated external resource directory for html.design, Colorlib, TemplateMo, uiCookies, W3.CSS, and GitHub collections. External templates are not downloaded or redistributed automatically.
 - MCP tools for template search, project/reference inventory, and design guidance; resources for curated source/license notes and the local design brief.
 
+## Installation
+
+You can install the HTML Design Advisor MCP directly from the GitHub repository using the install scripts:
+
+**Linux/macOS:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.ps1 | iex
+```
+
+After installation, add the MCP server to your MCP configuration:
+
+```json
+{
+    "name": "html-design-advisor",
+    "command": "python3",
+    "args": ["-m", "html_design_advisor"],
+    "env": {}
+}
+```
+
 ## Development
 
 Python 3.11+ recommended. Install with `python -m pip install -e '.[test]'` and launch with `python -m html_design_advisor`. The server uses stdio transport and read-only local filesystem access.
