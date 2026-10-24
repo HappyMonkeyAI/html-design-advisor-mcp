@@ -32,6 +32,12 @@ Goal: make `recommend_design` useful for webpage briefs while retaining the read
 
 Initial success criteria: neither real-site brief receives an `avoid_for` conflict as an unexplained top recommendation; explicit constraints affect ordering or produce no-fit; website references have item-level provenance fields and honest license status; existing search, audit, resources, and filesystem boundaries continue to work.
 
+## 2026-10-23 sibling inventory note
+Added local inventory entries for `nothing-design-skill` (opt-in visual direction via `get_design_guidance`), plus `openui` and `open-intelligent-ui` as generative-UI product/framework references. Recommendation seeds and website ranking are unchanged; gen-UI repos are discovery-only.
+
+## 2026-10-24 ranking and brand-refresh note
+After Ellis Mediation and Rewlea Swimming local evaluations: `recommend_design` now prefers website/interactive structure in `recommendations` and lists slide decks as `visual_mood_seeds`. Website purpose tags were widened for local/family/leisure/professional services. `get_design_guidance` gained an opt-in `brand-refresh` pack for keep-brand client refresh briefs.
+
 ## Pre-mortem
 - Stale or inaccurate license claims could lead to improper reuse. Mitigation: per-asset provenance and unknown-by-default licensing.
 - Broad filesystem crawling could leak unrelated files or hurt performance. Mitigation: curated paths, explicit root, no dependency traversal.

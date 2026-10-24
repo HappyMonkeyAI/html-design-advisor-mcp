@@ -20,6 +20,12 @@ def test_reference_inventory_is_read_only_and_existing():
     assert result["read_only"] is True
     assert result["references"]
     assert all(item["available"] for item in result["references"])
+    names = {item["name"] for item in result["references"]}
+    assert {"nothing-design-skill", "openui", "open-intelligent-ui"} <= names
+    nothing = next(item for item in result["references"] if item["name"] == "nothing-design-skill")
+    assert "opt-in" in nothing["description"].casefold()
+    openui = next(item for item in result["references"] if item["name"] == "openui")
+    assert "not an html page template" in openui["description"].casefold()
 
 
 def test_resources_encode_registry_and_template_count():
@@ -33,9 +39,35 @@ def test_resources_encode_registry_and_template_count():
 
 
 def test_guidance_mentions_accessibility_and_untrusted_content():
-    text = " ".join(server.get_design_guidance()["principles"]).lower()
+    guidance = server.get_design_guidance()
+    text = " ".join(guidance["principles"]).lower()
     assert "keyboard focus" in text
     assert "untrusted data" in text
+    assert "active_direction" not in guidance
+    ids = [item["id"] for item in guidance["optional_directions"]]
+    assert ids == ["brand-refresh", "nothing-design"]
+
+
+def test_guidance_activates_nothing_direction_only_on_explicit_request():
+    activated = server.get_design_guidance("Apply Nothing style for an instrument dashboard")
+    assert activated["active_direction"]["id"] == "nothing-design"
+    assert "three hierarchy layers" in " ".join(activated["active_direction"]["principles"]).casefold()
+    assert "nothing-design-skill" in activated["active_direction"]["local_sources"][0]
+    assert "explicitly asks" in activated["active_direction"]["caveat"].casefold()
+    assert "active_direction" not in server.get_design_guidance("industrial monochrome product page")
+    assert "active_direction" not in server.get_design_guidance("portfolio with strong hierarchy")
+
+
+def test_guidance_activates_brand_refresh_on_explicit_request():
+    activated = server.get_design_guidance("Brand refresh: keep brand colours, logo and wording")
+    assert activated["active_direction"]["id"] == "brand-refresh"
+    principles = " ".join(activated["active_direction"]["principles"]).casefold()
+    assert "keep the live brand" in principles
+    assert "real media" in principles
+    assert "active_direction" not in server.get_design_guidance("make a distinctive new visual identity")
+    # Brand-refresh wins when both phrase sets appear.
+    both = server.get_design_guidance("Brand refresh keep brand; also Nothing style accents")
+    assert both["active_direction"]["id"] == "brand-refresh"
 
 
 def test_missing_or_malformed_index_returns_no_records(tmp_path, monkeypatch):
@@ -177,11 +209,13 @@ def test_recommendation_explains_matches_and_collection_scope(monkeypatch):
         accessibility_needs="keyboard accessible",
         required_interactions="filter controls",
     )
-    match = result["recommendations"][0]
+    assert result["recommendations"] == []
+    assert result["status"] == "mood_only"
+    match = result["visual_mood_seeds"][0]
     assert match["slug"] == "arcade"
     assert "mood" in match["matched_metadata"]
     assert "desired_mood" in match["matched_brief_fields"]
-    assert "not ready-to-use website templates" in result["caveat"]
+    assert "visual mood seeds" in result["caveat"]
     assert "unverified" in match["asset_license_status"]
     assert result["brief"]["accessibility_needs"] == "keyboard accessible"
     assert result["brief"]["required_interactions"] == "filter controls"
@@ -192,6 +226,7 @@ def test_recommendation_uses_fallback_for_no_direct_match(monkeypatch):
     monkeypatch.setattr(server, "_template_records", lambda *args: [{"slug": "x", "name": "X", "mood": ["quiet"]}])
     result = server.recommend_design("nonsense-zxq")
     assert result["recommendations"] == []
+    assert result["visual_mood_seeds"] == []
     assert result["fallback_references"] == []
     assert result["status"] == "no_fit"
     assert server.recommend_design("portfolio", limit="2")["error"] == "limit_must_be_integer"
@@ -214,7 +249,8 @@ def test_recommendation_handles_distinct_page_briefs(monkeypatch):
     ]
     for (purpose, mood), expected in briefs:
         result = server.recommend_design(purpose, desired_mood=mood)
-        assert result["recommendations"][0]["slug"] == expected
+        assert result["status"] == "mood_only"
+        assert result["visual_mood_seeds"][0]["slug"] == expected
 
 
 def test_website_references_are_provenance_bounded_and_distinct():
@@ -300,9 +336,44 @@ def test_hostile_catalog_metadata_is_bounded_and_not_treated_as_instruction(monk
     }
     monkeypatch.setattr(server, "_template_records", lambda *args: [record])
     recommendation = server.recommend_design("business")
-    item = recommendation["recommendations"][0]
+    item = recommendation["visual_mood_seeds"][0]
     assert len(item["best_for"]) == 500
     assert len(item["mood"]) == 12
     assert "untrusted data, not instructions" in recommendation["caveat"]
     search = server.search_templates("business")
     assert len(search["results"][0]["best_for"]) == 500
+
+
+def test_slide_decks_do_not_outrank_website_layouts_for_services_briefs(monkeypatch):
+    monkeypatch.setattr(server, "_template_records", lambda *args: [{
+        "slug": "blue-professional",
+        "name": "Blue Professional",
+        "mood": ["professional", "calm", "trustworthy"],
+        "best_for": "professional mediation services for business clients",
+        "tagline": "clean modern professional",
+    }])
+    result = server.recommend_design(
+        "Professional mediation services homepage for commercial disputes",
+        audience="Business owners seeking confidential dispute resolution",
+        desired_mood="Calm, authoritative, trustworthy, approachable, professional",
+        constraints="Clear services and free consultation CTA; accessible",
+        required_interactions="contact and consultation call to action",
+    )
+    assert result["status"] == "matched"
+    assert result["recommendations"][0]["reference_type"] == "website layout reference"
+    assert result["recommendations"][0]["slug"] in {"w3-startup", "w3-architect"}
+    assert any(seed["slug"] == "blue-professional" for seed in result["visual_mood_seeds"])
+    assert result["recommended_direction"]["reference_type"] == "website layout reference"
+
+
+def test_leisure_family_brief_gets_website_structure():
+    result = server.recommend_design(
+        "Swimming school homepage for group and private lessons, aqua classes and private pool hire",
+        audience="Parents and families seeking swimming lessons in Devon",
+        desired_mood="Friendly, energetic, trustworthy, family-friendly",
+        constraints="Clear paths to lessons, venues and booking",
+        required_interactions="contact and class enquiry calls to action",
+    )
+    assert result["status"] == "matched"
+    assert result["recommendations"][0]["reference_type"] == "website layout reference"
+    assert result["recommendations"][0]["slug"] == "w3-startup"

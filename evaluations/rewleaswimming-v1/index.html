@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rewlea Swimming & Little Ducklings — swimming lessons, aqua classes and private pool hire in Ashburton, Kingsteignton and Torquay.">
+  <meta name="theme-color" content="#0dd8fd">
+  <title>Rewlea Swimming – &amp; Little Ducklings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --cyan: #0dd8fd;
+      --cyan-deep: #00b6d8;
+      --orange: #ff5502;
+      --orange-deep: #e04800;
+      --lime: #90d30f;
+      --lime-deep: #74ad0a;
+      --ink: #333333;
+      --muted: #666666;
+      --line: #e6e6e6;
+      --paper: #ffffff;
+      --soft: #f5f5f5;
+      --focus: #007a8f;
+      --sans: "Montserrat", "Avenir Next", "Segoe UI", sans-serif;
+      --measure: 70rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--cyan-deep); text-underline-offset: 0.18em; }
+    a:focus-visible, summary:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 40;
+      padding: 0.65rem 1rem;
+      transform: translateY(-160%);
+      background: var(--ink);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .wrap {
+      width: min(calc(100% - 2.5rem), var(--measure));
+      margin-inline: auto;
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+      padding-top: 1rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .wordmark {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      padding: 0.7rem 1rem;
+      background: var(--cyan);
+      color: white;
+      text-decoration: none;
+      line-height: 1.15;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+    }
+    .wordmark strong {
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .wordmark span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      opacity: 0.95;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 0;
+      background: var(--lime);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.7rem 0.95rem;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      gap: 0.2rem;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+    }
+    .menu > li { display: flex; position: relative; }
+    .menu > li > a,
+    .menu > li > details {
+      display: flex;
+      align-items: stretch;
+    }
+    .menu > li > a,
+    .menu > li > details > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.85rem 1.05rem;
+      color: white;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      list-style: none;
+      cursor: pointer;
+      border: 0;
+      background: #444;
+      white-space: nowrap;
+    }
+    .menu > li:nth-child(2) > details > summary { background: var(--cyan); }
+    .menu > li:nth-child(3) > a { background: var(--orange); }
+    .menu > li:nth-child(4) > a { background: var(--lime); }
+    .menu > li > a:hover,
+    .menu > li > details > summary:hover { filter: brightness(0.94); }
+    .menu summary { list-style: none; }
+    .menu summary::-webkit-details-marker,
+    .menu summary::marker { display: none; content: ""; }
+    .menu summary::after {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-0.1rem);
+      opacity: 0.85;
+    }
+    details[open] > summary::after {
+      transform: rotate(225deg) translateY(-0.05rem);
+    }
+    .submenu {
+      position: absolute;
+      top: calc(100% + 0.25rem);
+      left: 0;
+      z-index: 30;
+      min-width: 15rem;
+      margin: 0;
+      padding: 0.4rem 0;
+      list-style: none;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 32px rgb(0 0 0 / 0.14);
+      display: none;
+    }
+    details[open] > .submenu { display: grid; }
+    .submenu a {
+      display: block;
+      padding: 0.6rem 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .submenu a:hover {
+      background: var(--soft);
+      color: var(--cyan-deep);
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(78vh, 42rem);
+      color: white;
+      isolation: isolate;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgb(0 0 0 / 0.28) 0%, rgb(0 0 0 / 0.08) 42%, rgb(0 0 0 / 0.55) 100%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      padding: clamp(7.5rem, 14vw, 9.5rem) 0 6.5rem;
+      max-width: 34rem;
+      animation: rise 0.75s ease both;
+    }
+    .hero-copy h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+    }
+    .hero-copy p {
+      margin: 0 0 1.25rem;
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      font-weight: 500;
+      color: rgb(255 255 255 / 0.94);
+      text-shadow: 0 1px 10px rgb(0 0 0 / 0.35);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.9rem;
+      padding: 0.55rem 1.15rem;
+      border: 2px solid transparent;
+      background: var(--lime);
+      color: #173000;
+      font-weight: 800;
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .button:hover { background: var(--lime-deep); color: white; transform: translateY(-1px); }
+    .button-cyan { background: var(--cyan); color: #003845; }
+    .button-cyan:hover { background: var(--cyan-deep); color: white; }
+    .button-ghost {
+      background: rgb(255 255 255 / 0.12);
+      border-color: rgb(255 255 255 / 0.7);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+    .button-ghost:hover { background: white; color: var(--ink); }
+
+    .paths {
+      position: relative;
+      z-index: 5;
+      margin-top: -3.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+    .path {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-height: 8.5rem;
+      padding: 1.25rem 1.2rem 1.15rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+      line-height: 1.25;
+      box-shadow: 0 14px 36px rgb(0 0 0 / 0.16);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .path:hover { transform: translateY(-3px); filter: brightness(1.03); }
+    .path span {
+      align-self: flex-end;
+      font-size: 1.4rem;
+      line-height: 1;
+      opacity: 0.9;
+    }
+    .path-orange { background: var(--orange); }
+    .path-cyan { background: var(--cyan); color: #003845; }
+    .path-lime { background: var(--lime); color: #173000; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(0.7rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section { scroll-margin-top: 1rem; }
+    .section { padding-block: clamp(3rem, 6vw, 4.75rem); }
+    .section h2 {
+      margin: 0 0 1rem;
+      color: var(--ink);
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .prose p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      max-width: 42rem;
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+    .welcome-photo {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      overflow: hidden;
+    }
+    .welcome-photo img {
+      width: 100%;
+      aspect-ratio: 570 / 379;
+      object-fit: cover;
+    }
+    .welcome-photo figcaption {
+      margin: 0;
+      padding: 0.55rem 0.7rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      background: white;
+    }
+
+    .importance {
+      background: var(--soft);
+      border-block: 1px solid var(--line);
+    }
+    .importance-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+
+    .term {
+      background: var(--orange);
+      color: white;
+    }
+    .term h2 { color: white; }
+    .term p {
+      margin: 0;
+      max-width: 46rem;
+      color: rgb(255 255 255 / 0.95);
+      font-weight: 500;
+    }
+
+    .lessons-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+    }
+    .lesson-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem 1rem 1.05rem;
+      background: white;
+      border-top: 4px solid var(--cyan);
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .lesson-link:nth-child(2) { border-top-color: var(--orange); }
+    .lesson-link:nth-child(3) { border-top-color: var(--lime); }
+    .lesson-link:nth-child(4) { border-top-color: #444; }
+    .lesson-link strong { font-size: 0.98rem; font-weight: 800; }
+    .lesson-link span { color: var(--muted); font-size: 0.86rem; font-weight: 500; }
+    .lesson-link:hover { background: #fafafa; }
+
+    .contact {
+      background: linear-gradient(180deg, white, #f3fcff);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    .contact-panel {
+      padding: 1.35rem 1.35rem 1.4rem;
+      background: var(--cyan);
+      color: #003845;
+    }
+    .contact-panel h2 { color: #003845; }
+    .contact-list {
+      list-style: none;
+      margin: 1rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .contact-list li { display: grid; gap: 0.15rem; }
+    .contact-list span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+    .contact-list a,
+    .contact-list strong {
+      color: #003845;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.02rem;
+    }
+    .contact-list a:hover { text-decoration: underline; }
+    .contact-aside {
+      padding: 1.35rem 0 0;
+      border-top: 4px solid var(--lime);
+    }
+    .contact-aside p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+    .payments {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .payments img { height: 2rem; width: auto; }
+
+    .site-footer {
+      padding-block: 1.75rem 2.2rem;
+      background: #2a2a2a;
+      color: #cfcfcf;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    .site-footer a { color: white; }
+    .footer-copy { margin: 0 0 1rem; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem 1.35rem;
+    }
+    .experiment-note {
+      margin: 1.15rem auto 0;
+      max-width: 46rem;
+      color: #9a9a9a;
+      font-size: 0.8rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .nav-toggle { display: inline-flex; }
+      .menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        right: 1.25rem;
+        left: 1.25rem;
+        flex-direction: column;
+        box-shadow: 0 14px 32px rgb(0 0 0 / 0.2);
+      }
+      .menu.is-open { display: flex; }
+      .menu > li,
+      .menu > li > a,
+      .menu > li > details,
+      .menu > li > details > summary { width: 100%; }
+      .menu > li > a,
+      .menu > li > details > summary {
+        justify-content: space-between;
+        white-space: normal;
+      }
+      .submenu { position: static; box-shadow: none; border: 0; }
+      .path-grid,
+      .welcome-grid,
+      .importance-grid,
+      .contact-grid,
+      .lessons-strip { grid-template-columns: 1fr; }
+      .hero-copy { padding-bottom: 5.5rem; }
+      .paths { margin-top: -2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="wordmark" href="https://www.rewleaswimming.online/">
+        <strong>Rewlea Swimming</strong>
+        <span>&amp; Little Ducklings</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>Menu</button>
+      <nav aria-label="Primary">
+        <ul class="menu" id="site-menu">
+          <li><a href="https://www.rewleaswimming.online/">Home</a></li>
+          <li>
+            <details>
+              <summary>Lessons</summary>
+              <ul class="submenu">
+                <li><a href="https://www.rewleaswimming.online/lessons/">All lessons</a></li>
+                <li><a href="https://www.rewleaswimming.online/lessons/group-classes-for-all-ages/">Group Classes for all ages</a></li>
+                <li><a href="https://www.rewleaswimming.online/lessons/private-11-lessons/">Private 1:1 lessons</a></li>
+                <li><a href="https://www.rewleaswimming.online/lessons/aqua-classes/">Aqua Classes</a></li>
+                <li><a href="https://www.rewleaswimming.online/lessons/private-hire/">Private Hire</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="https://www.rewleaswimming.online/venues/">Venues</a></li>
+          <li><a href="https://www.rewleaswimming.online/contacts/">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <img
+        src="https://www.rewleaswimming.online/wp-content/uploads/2015/10/slider-image1.jpg"
+        width="2050"
+        height="1010"
+        alt="">
+    </div>
+    <div class="wrap hero-copy">
+      <h1 id="hero-title">Welcome to Rewlea Swimming!</h1>
+      <p>Swimming lessons for all ages, water fitness, and private pool hire across South Devon.</p>
+      <div class="hero-actions">
+        <a class="button" href="https://www.rewleaswimming.online/contacts/">How can we book?</a>
+        <a class="button button-ghost" href="https://www.rewleaswimming.online/lessons/">View classes</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap paths">
+    <div class="path-grid">
+      <a class="path path-orange" href="https://www.rewleaswimming.online/lessons/">
+        What Classes are available?
+        <span aria-hidden="true">›</span>
+      </a>
+      <a class="path path-cyan" href="https://www.rewleaswimming.online/venues/">
+        Where can we swim?
+        <span aria-hidden="true">›</span>
+      </a>
+      <a class="path path-lime" href="https://www.rewleaswimming.online/contacts/">
+        How can we book?
+        <span aria-hidden="true">›</span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="section" id="welcome" aria-labelledby="welcome-title">
+      <div class="wrap welcome-grid">
+        <div class="prose">
+          <h2 id="welcome-title">Welcome to Rewlea Swimming!</h2>
+          <p>Rewlea Swimming offers various types of swimming lessons for all ages along with water fitness classes, swim membership, general swimming and private pool hire.</p>
+          <p>We currently offer classes in Ashburton, Kingsteignton and Torquay. Please check the locations for availability.</p>
+          <p>We hope you find all the information you are looking for on our website but for further enquiries please click to contact us.</p>
+          <div class="lessons-strip" aria-label="Lesson types">
+            <a class="lesson-link" href="https://www.rewleaswimming.online/lessons/group-classes-for-all-ages/">
+              <strong>Group Classes</strong>
+              <span>For all ages</span>
+            </a>
+            <a class="lesson-link" href="https://www.rewleaswimming.online/lessons/private-11-lessons/">
+              <strong>Private 1:1</strong>
+              <span>Focused lessons</span>
+            </a>
+            <a class="lesson-link" href="https://www.rewleaswimming.online/lessons/aqua-classes/">
+              <strong>Aqua Classes</strong>
+              <span>Water fitness</span>
+            </a>
+            <a class="lesson-link" href="https://www.rewleaswimming.online/lessons/private-hire/">
+              <strong>Private Hire</strong>
+              <span>Book the pool</span>
+            </a>
+          </div>
+        </div>
+        <figure class="welcome-photo">
+          <img
+            src="https://www.rewleaswimming.online/wp-content/uploads/2016/08/page1_img1.jpg"
+            width="570"
+            height="379"
+            alt="Swim teacher with pupils at the poolside"
+            loading="lazy">
+          <figcaption>Photo from the live Rewlea Swimming homepage.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section importance" id="importance" aria-labelledby="importance-title">
+      <div class="wrap importance-grid">
+        <figure class="welcome-photo">
+          <img
+            src="https://www.rewleaswimming.online/wp-content/uploads/2016/08/page1_img2.jpg"
+            width="570"
+            height="379"
+            alt="Children learning to swim"
+            loading="lazy">
+          <figcaption>Photo from the live Rewlea Swimming homepage.</figcaption>
+        </figure>
+        <div class="prose">
+          <h2 id="importance-title">Importance of Swimming</h2>
+          <p>Living in the South West we feel it is important for children to learn to swim and be safe in and around water. Lots of our pupils continue with their swimming and join local swimming clubs, attend galas and compete regularly. Others take-part in various water sport activities available locally such as kayaking, sailing and surfing and some of our first swimmers we had our now qualified teachers themselves and lifeguards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section term" id="term" aria-labelledby="term-title">
+      <div class="wrap">
+        <h2 id="term-title">Autumn – September Term</h2>
+        <p>We start our new term in September if you are wanting to try any classes. All existing pupils will continue in your existing slot unless you are contacted about an alternative session.</p>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacts" aria-labelledby="contacts-title">
+      <div class="wrap contact-grid">
+        <div class="contact-panel">
+          <h2 id="contacts-title">Contacts</h2>
+          <ul class="contact-list">
+            <li>
+              <span>Address</span>
+              <strong>Rewlea Swimming &amp; Little Ducklings<br>Rewlea House, Rew Road, Ashburton, Devon TQ13 7EL</strong>
+            </li>
+            <li>
+              <span>Phone</span>
+              <a href="tel:+441364653669">01364 653669</a>
+            </li>
+            <li>
+              <span>Email</span>
+              <a href="mailto:littleducklings4@aol.com">littleducklings4@aol.com</a>
+            </li>
+          </ul>
+        </div>
+        <aside class="contact-aside">
+          <p>Or you can use our contact form on the live site. This local concept does not submit forms.</p>
+          <div class="hero-actions">
+            <a class="button button-cyan" href="https://www.rewleaswimming.online/contacts/">Open contact form</a>
+            <a class="button" href="https://www.rewleaswimming.online/payments-and-refund-policy/" style="background: white; border-color: var(--line); color: var(--ink);">Payments &amp; refund policy</a>
+          </div>
+          <div class="payments">
+            <img
+              src="https://www.rewleaswimming.online/wp-content/uploads/2018/10/worldpay-logo-trans-300x106.png"
+              width="300"
+              height="106"
+              alt="Worldpay"
+              loading="lazy">
+            <span>Payments accepted via the live site.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-copy">Rewlea Swimming Ltd © 2018, Company number 08925225</p>
+      <div class="footer-links">
+        <a href="https://www.rewleaswimming.online/lessons/">Lessons</a>
+        <a href="https://www.rewleaswimming.online/venues/">Venues</a>
+        <a href="https://www.rewleaswimming.online/contacts/">Contacts</a>
+        <a href="https://www.rewleaswimming.online/payments-and-refund-policy/">Payments and refund policy</a>
+      </div>
+      <p class="experiment-note">
+        Local design experiment only — not deployed and not an approved replacement.
+        Photos, Worldpay mark and destination links are hotlinked from the public live site for this mockup and remain Rewlea Swimming / partner property.
+        Layout and styling are proposed; wording follows the live homepage.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector("[data-nav-toggle]");
+      const menu = document.getElementById("site-menu");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        menu.classList.toggle("is-open", !open);
+      });
+    })();
+  </script>
+</body>
+</html>

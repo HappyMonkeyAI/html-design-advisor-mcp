@@ -9,6 +9,9 @@ description = "Read-only MCP advisor for HTML webpage design and local templates
 requires-python = ">=3.11"
 dependencies = ["mcp>=1.2,<2"]
 
+[project.scripts]
+html-design-advisor = "html_design_advisor.__main__:main"
+
 [project.optional-dependencies]
 test = ["pytest>=8"]
 

@@ -7,9 +7,34 @@ This project is released under the [MIT License](LICENSE). The license covers th
 ## Initial scope
 
 - Read-only discovery over sibling projects under `../` (never edits them).
-- Reuse locally available references, especially `beautiful-html-templates`, `frontend-slides`, `ui`, `uilayouts`, `astro-spatial`, `liquid-dom`, `Kami`, and this workspace's `SKILL.md` / `spec.md`.
+- Reuse locally available references, especially `beautiful-html-templates`, `frontend-slides`, `ui`, `uilayouts`, `astro-spatial`, `liquid-dom`, `Kami`, opt-in `nothing-design-skill`, gen-UI siblings `openui` / `open-intelligent-ui` (inventory only), and this workspace's `SKILL.md` / `spec.md`.
 - Curated external resource directory for html.design, Colorlib, TemplateMo, uiCookies, W3.CSS, and GitHub collections. External templates are not downloaded or redistributed automatically.
 - MCP tools for template search, project/reference inventory, and design guidance; resources for curated source/license notes and the local design brief.
+
+## Installation
+
+You can install the HTML Design Advisor MCP directly from the GitHub repository using the install scripts:
+
+**Linux/macOS:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.ps1 | iex
+```
+
+After installation, add the MCP server to your MCP configuration:
+
+```json
+{
+    "name": "html-design-advisor",
+    "command": "python3",
+    "args": ["-m", "html_design_advisor"],
+    "env": {}
+}
+```
 
 ## Development
 
