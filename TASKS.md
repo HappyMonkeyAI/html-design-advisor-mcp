@@ -57,6 +57,17 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Direct MCP SDK smoke: discover five tools/two resources, call every tool, read both resources.
 - [x] Keep client-specific registration outside the project contract; document the stdio launch command in README.
 
+## M8 — Sibling inventory and opt-in direction pack
+- [x] Add `nothing-design-skill`, `openui`, and `open-intelligent-ui` to `list_design_references` with scope-accurate descriptions.
+- [x] Extend `get_design_guidance` with optional-direction metadata; activate Nothing-inspired cues only on explicit brief phrases.
+- [x] Cover inventory labels and opt-in vs non-trigger briefs in unit tests; keep gen-UI siblings out of `recommend_design` seeds.
+
+## M9 — Ranking quality and brand-refresh guidance
+- [x] Prefer website/interactive references in `recommendations`; move slide decks to `visual_mood_seeds` with `matched` / `mood_only` / `no_fit` status.
+- [x] Boost website purpose/audience scoring and widen Startup/Architect purpose tags for local/family/leisure/professional services briefs.
+- [x] Add opt-in `brand-refresh` guidance pack; prefer it over Nothing when both are requested.
+- [x] Regression tests for Ellis-like services brief and Rewlea-like leisure/family brief.
+
 ## Deferred pending explicit approval
 - [ ] Remote crawling, template downloads/import, writes into user projects, browser-based audits, HTTP/LAN transport, authentication, and deployment.
 
