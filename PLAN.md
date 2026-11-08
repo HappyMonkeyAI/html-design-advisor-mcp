@@ -38,6 +38,12 @@ Added local inventory entries for `nothing-design-skill` (opt-in visual directio
 ## 2026-10-24 ranking and brand-refresh note
 After Ellis Mediation and Rewlea Swimming local evaluations: `recommend_design` now prefers website/interactive structure in `recommendations` and lists slide decks as `visual_mood_seeds`. Website purpose tags were widened for local/family/leisure/professional services. `get_design_guidance` gained an opt-in `brand-refresh` pack for keep-brand client refresh briefs.
 
+## 2026-10-25 oil-ui note
+Sibling `oil-ui` (MIT design skill for multi-direction exploration) added to inventory and as an opt-in `get_design_guidance` pack. Not used as recommendation seeds; not a substitute for brand-refresh client work.
+
+## 2026-11-08 section inspiration note
+Admitted Footer Design and CTA Gallery as metadata-only `website section inspiration reference` records (look-don't-copy). They rank after whole-page layouts and never own `recommended_direction` when a layout matches. Scrolltide, Scroll Shaders, VibeIndex, and Aceternity UI declined for the catalog; Refero stays guidance-only. Evidence: `docs/research/2026-11-08-section-inspiration-leads.md`.
+
 ## Pre-mortem
 - Stale or inaccurate license claims could lead to improper reuse. Mitigation: per-asset provenance and unknown-by-default licensing.
 - Broad filesystem crawling could leak unrelated files or hurt performance. Mitigation: curated paths, explicit root, no dependency traversal.

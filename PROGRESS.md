@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-08 — Section inspiration galleries (footer / CTA)
+
+Reviewed the amananimates UI roundup against website-relevance goals and LAN research (`.215` bookmark dispositions; `.80` article-research topics are MCP/agent-focused). Admitted Footer Design and CTA Gallery as look-don't-copy section inspiration references; declined Scrolltide, Scroll Shaders, VibeIndex, and Aceternity for the catalog. Whole-page layouts stay preferred for structure and `recommended_direction`.
+
+### Verification
+
+- `.venv/Scripts/python.exe -m pytest -q`: 32 passed.
+- `git diff --check`: passed.
+- Live stdio MCP smoke: five tools / two resources discovered; sources include Footer Design and CTA Gallery; `section_inspiration_reference_count=2`; conversion brief returned `w3-start-page` then `cta-gallery` with layout-owned direction.
+
 ## 2026-10-06 — First real-site design-quality evaluation
 
 The owner approved a local-only experiment applying the HTML Design Advisor to the Stephen Phillips homepage. The public site was inspected at https://www.stephenphillips.co.uk/ and its About and portfolio pages were used only as factual references. No production page, sibling project, or deployment was changed.

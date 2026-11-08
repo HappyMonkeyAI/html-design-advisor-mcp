@@ -21,21 +21,27 @@ def test_reference_inventory_is_read_only_and_existing():
     assert result["references"]
     assert all(item["available"] for item in result["references"])
     names = {item["name"] for item in result["references"]}
-    assert {"nothing-design-skill", "openui", "open-intelligent-ui"} <= names
+    assert {"nothing-design-skill", "oil-ui", "openui", "open-intelligent-ui"} <= names
     nothing = next(item for item in result["references"] if item["name"] == "nothing-design-skill")
     assert "opt-in" in nothing["description"].casefold()
+    oil = next(item for item in result["references"] if item["name"] == "oil-ui")
+    assert "oil ui" in oil["description"].casefold() or "multi-direction" in oil["description"].casefold()
     openui = next(item for item in result["references"] if item["name"] == "openui")
     assert "not an html page template" in openui["description"].casefold()
 
 
 def test_resources_encode_registry_and_template_count():
     sources = json.loads(server.source_registry())
-    assert all(source["terms_url"] and source["checked_on"] == "2026-10-06" for source in sources["sources"])
+    assert all(source["terms_url"] and source["checked_on"] for source in sources["sources"])
+    assert all(source["checked_on"] in {"2026-10-06", "2026-11-08"} for source in sources["sources"])
     assert all(source["asset_license_status"] == "unverified" for source in sources["sources"])
-    assert len(sources["website_references"]) == 6
+    assert len(sources["website_references"]) == 8
+    assert any(source["name"] == "Footer Design" for source in sources["sources"])
+    assert any(source["name"] == "CTA Gallery" for source in sources["sources"])
     assets = json.loads(server.local_assets())
     assert assets["template_count"] == 34
     assert assets["website_reference_count"] == 5
+    assert assets["section_inspiration_reference_count"] == 2
 
 
 def test_guidance_mentions_accessibility_and_untrusted_content():
@@ -45,7 +51,7 @@ def test_guidance_mentions_accessibility_and_untrusted_content():
     assert "untrusted data" in text
     assert "active_direction" not in guidance
     ids = [item["id"] for item in guidance["optional_directions"]]
-    assert ids == ["brand-refresh", "nothing-design"]
+    assert ids == ["brand-refresh", "oil-ui", "nothing-design"]
 
 
 def test_guidance_activates_nothing_direction_only_on_explicit_request():
@@ -67,6 +73,18 @@ def test_guidance_activates_brand_refresh_on_explicit_request():
     assert "active_direction" not in server.get_design_guidance("make a distinctive new visual identity")
     # Brand-refresh wins when both phrase sets appear.
     both = server.get_design_guidance("Brand refresh keep brand; also Nothing style accents")
+    assert both["active_direction"]["id"] == "brand-refresh"
+
+
+def test_guidance_activates_oil_ui_on_explicit_request():
+    activated = server.get_design_guidance("Use oil-ui to explore a few design directions for this product")
+    assert activated["active_direction"]["id"] == "oil-ui"
+    principles = " ".join(activated["active_direction"]["principles"]).casefold()
+    assert "genuinely different directions" in principles
+    assert "oil-ui" in activated["active_direction"]["local_sources"][0]
+    assert "active_direction" not in server.get_design_guidance("explore a few design directions for this product")
+    # Brand-refresh still wins over oil-ui when both are requested.
+    both = server.get_design_guidance("Brand refresh keep brand; also use oil-ui")
     assert both["active_direction"]["id"] == "brand-refresh"
 
 
@@ -261,7 +279,11 @@ def test_website_references_are_provenance_bounded_and_distinct():
         assert ref["terms_url"].startswith("https://")
         assert ref["checked_on"] and ref["license_status"] and ref["attribution"]
         assert ref["asset_license_status"] == "unverified"
-        assert ref["reference_type"] in {"website layout reference", "interactive component reference"}
+        assert ref["reference_type"] in {
+            "website layout reference",
+            "website section inspiration reference",
+            "interactive component reference",
+        }
     result = server.recommend_design("small business services and portfolio")
     assert result["recommendations"][0]["reference_type"] == "website layout reference"
     assert result["recommendations"][0]["source"].startswith("https://")
@@ -377,3 +399,23 @@ def test_leisure_family_brief_gets_website_structure():
     assert result["status"] == "matched"
     assert result["recommendations"][0]["reference_type"] == "website layout reference"
     assert result["recommendations"][0]["slug"] == "w3-startup"
+
+
+def test_section_inspiration_surfaces_without_outranking_layouts():
+    services = server.recommend_design(
+        "Professional services homepage with portfolio and contact",
+        audience="Local clients",
+        desired_mood="professional",
+        required_interactions="contact call to action",
+    )
+    assert services["recommendations"][0]["reference_type"] == "website layout reference"
+    assert services["recommended_direction"]["reference_type"] == "website layout reference"
+    conversion = server.recommend_design(
+        "Landing page conversion with newsletter signup",
+        desired_mood="direct",
+        required_interactions="call to action button and newsletter form",
+    )
+    slugs = {item["slug"] for item in conversion["recommendations"]}
+    assert "cta-gallery" in slugs
+    footer = server.recommend_design("Site footer contact directory and closing navigation")
+    assert any(item["slug"] == "footer-design" for item in footer["recommendations"])

@@ -68,6 +68,15 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Add opt-in `brand-refresh` guidance pack; prefer it over Nothing when both are requested.
 - [x] Regression tests for Ellis-like services brief and Rewlea-like leisure/family brief.
 
+## M10 — Oil UI sibling inventory and opt-in pack
+- [x] Add `oil-ui` to `list_design_references` with scope-accurate description.
+- [x] Add opt-in `oil-ui` guidance pack; brand-refresh still wins when both are requested; generic “explore directions” does not auto-trigger.
+
+## M11 — Section inspiration galleries (footer / CTA)
+- [x] Research X roundup + `.215` bookmark dispositions + `.80` article-research topics; record admit/decline in `docs/research/2026-11-08-section-inspiration-leads.md`.
+- [x] Admit Footer Design and CTA Gallery as provenance-bounded section inspiration references; keep whole-page layouts preferred for structure.
+- [x] Add registry source rows and regression coverage so section refs surface for conversion/footer briefs without outranking layouts.
+
 ## Deferred pending explicit approval
 - [ ] Remote crawling, template downloads/import, writes into user projects, browser-based audits, HTTP/LAN transport, authentication, and deployment.
 
