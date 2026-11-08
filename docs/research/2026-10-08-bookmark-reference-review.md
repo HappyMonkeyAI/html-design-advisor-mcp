@@ -8,6 +8,8 @@ Checked 2026-10-08. The 2026-09-23 HappyMonkey.AI bookmark CSV supplied leads, n
 | ThreeUI Community | [Community repository](https://github.com/MengTo/threeui), [MIT license](https://github.com/MengTo/threeui/blob/main/LICENSE), and [asset licenses](https://github.com/MengTo/threeui/blob/main/ASSET-LICENSES.md) distinguish Community code and authored assets from fonts, runtime files, remote catalog media, Pro and Beta content. | Include one **interactive component** reference, never a whole-page website template. Preserve separate rights and notices. |
 | Refero DESIGN.md | [Official template](https://styles.refero.design/design-md/design-md-template) gives design-system documentation examples. | Guidance research only; no template or page asset indexed. |
 
+2026-11-08 follow-up: Footer Design and CTA Gallery were admitted as section inspiration references (metadata only). Scrolltide, Scroll Shaders, VibeIndex, and Aceternity UI were declined for the catalog. Evidence: `docs/research/2026-11-08-section-inspiration-leads.md`.
+
 The first whole-page references come from the previously reviewed [W3.CSS template gallery](https://www.w3schools.com/w3css/w3css_templates.asp). Its official page says its website templates may be modified, saved, shared and used in projects. This is gallery-level permission, not a clearance of every image or third-party asset. The following individual demos were inspected as inert web reference pages, with only concise human-authored metadata retained:
 
 | Reference | Item URL | Observed structure | Important limit |

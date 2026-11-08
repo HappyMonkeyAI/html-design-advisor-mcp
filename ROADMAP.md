@@ -2,7 +2,7 @@
 
 Product goal: a local, read-only MCP advisor that helps an AI client choose and review HTML page designs using the user's brief, local design references, and source/license evidence.
 
-Status: M0, M1, M2 provider-source research, M3 relevance follow-up, and M4 are implemented and verified. M3 now has five curated linked website layouts and one interactive component reference alongside local slide decks; bundled asset rights remain unverified. Direct stdio MCP discovery and tool/resource calls passed. Roadmap items do not authorize template downloads, project writes, or deployment.
+Status: M0, M1, M2 provider-source research, M3 relevance follow-up, M4, and M11 section-inspiration admits are implemented and verified. M3/M11 now have five curated linked website layouts, two section inspiration galleries (footer/CTA), and one interactive component reference alongside local slide decks; bundled asset rights remain unverified. Direct stdio MCP discovery and tool/resource calls passed. Roadmap items do not authorize template downloads, project writes, or deployment.
 
 Owner-authorized evaluation status: M6 now has local-only Stephen Phillips and HappyMonkey.AI homepage concepts. Both cases exposed weak website relevance in the original slide-deck-centered recommender; the dated evaluations retain that historical result. The 2026-10-08 relevance follow-up improves ranking and records current outputs in `docs/research/2026-10-08-recommendation-baseline.md`. The concepts passed the MCP's heuristic source review; browser checks are documented per evaluation. Neither is approved as a replacement, and neither public site was changed.
 
