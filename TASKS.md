@@ -94,7 +94,8 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Reuse one image from the existing homepage gallery by source URL and add two dated public reviews with reviewer attribution.
 - [x] Fix owner-reported testimonial date contrast/alignment and align work-row copy; verify at desktop and mobile sizes.
 - [x] Owner authorized including this evaluation in the public repository; retain source links and reviewer attribution, and label the image and reviews as material from the current public site rather than original project assets.
-- [ ] Get owner/representative feedback and test an alternative design direction before claiming the redesign is preferred.
+- [x] Test an alternative design direction (`evaluations/stephenphillips-v2/` keep-brand refresh vs v1 editorial); comparison sheet at `evaluations/COMPARISON-stephenphillips.md`.
+- [x] Owner preferred **v1** over v2 (2026-11-09) as the stronger local concept direction; recorded in the comparison sheet. Not a live-site replacement approval.
 - [x] Improve MCP candidate ranking based on both observed mismatches; current brief comparison and limits are recorded in `docs/research/2026-10-08-recommendation-baseline.md`.
 - [x] Repeat the local-only evaluation with HappyMonkey.AI at the owner's request; record actual MCP output, prototype and checks in `evaluations/happymonkey-v1/`.
 

@@ -1,5 +1,17 @@
 # Progress
 
+## 2026-11-09 — Stephen Phillips alternative direction (v2)
+
+Built `evaluations/stephenphillips-v2/` as a keep-brand refresh alternative to the v1 editorial Devon concept. Advisor call returned W3 Architect/Startup layouts (matched) with `brand-refresh` active. Comparison sheet: `evaluations/COMPARISON-stephenphillips.md`.
+
+### Owner preference
+
+Owner chose **v1** over v2 (2026-11-09) as the stronger local concept. That closes the comparative-feedback item for Stephen; it is not approval to replace the live site.
+
+### Verification
+
+- `audit_local_html` on v2: `status=reviewed`, 15,320 bytes, no heuristic findings; viewport/responsive/focus/reduced-motion + header/nav/main/footer landmarks.
+
 ## 2026-11-09 — Astryx / Doop / flawless-ui-ux sibling review
 
 Owner shared an X post about `flawless-ui-ux` and local clones of `astryx` and `doop`. Research note records admit/decline. Inventory now lists all three; opt-in guidance packs added for flawless and astryx; doop stays discovery-only (AGPL). Playwright inspect and remote inspiration remain deferred.
