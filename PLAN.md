@@ -44,6 +44,9 @@ Sibling `oil-ui` (MIT design skill for multi-direction exploration) added to inv
 ## 2026-11-08 section inspiration note
 Admitted Footer Design and CTA Gallery as metadata-only `website section inspiration reference` records (look-don't-copy). They rank after whole-page layouts and never own `recommended_direction` when a layout matches. Scrolltide, Scroll Shaders, VibeIndex, and Aceternity UI declined for the catalog; Refero stays guidance-only. Evidence: `docs/research/2026-11-08-section-inspiration-leads.md`.
 
+## 2026-11-09 astryx / doop / flawless note
+X post about `flawless-ui-ux` plus local `astryx` and `doop` clones reviewed. Inventory + opt-in guidance packs for flawless and astryx; doop discovery-only (AGPL). Playwright inspect and Doop remote inspiration stay deferred/out of MCP. Evidence: `docs/research/2026-11-09-astryx-doop-flawless-review.md`.
+
 ## Pre-mortem
 - Stale or inaccurate license claims could lead to improper reuse. Mitigation: per-asset provenance and unknown-by-default licensing.
 - Broad filesystem crawling could leak unrelated files or hurt performance. Mitigation: curated paths, explicit root, no dependency traversal.

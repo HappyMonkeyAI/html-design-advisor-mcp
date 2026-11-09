@@ -1,5 +1,14 @@
 # Progress
 
+## 2026-11-09 — Astryx / Doop / flawless-ui-ux sibling review
+
+Owner shared an X post about `flawless-ui-ux` and local clones of `astryx` and `doop`. Research note records admit/decline. Inventory now lists all three; opt-in guidance packs added for flawless and astryx; doop stays discovery-only (AGPL). Playwright inspect and remote inspiration remain deferred.
+
+### Verification
+
+- `.venv/Scripts/python.exe -m pytest -q`: 34 passed.
+- `git diff --check`: passed.
+
 ## 2026-11-08 — Section inspiration galleries (footer / CTA)
 
 Reviewed the amananimates UI roundup against website-relevance goals and LAN research (`.215` bookmark dispositions; `.80` article-research topics are MCP/agent-focused). Admitted Footer Design and CTA Gallery as look-don't-copy section inspiration references; declined Scrolltide, Scroll Shaders, VibeIndex, and Aceternity for the catalog. Whole-page layouts stay preferred for structure and `recommended_direction`.

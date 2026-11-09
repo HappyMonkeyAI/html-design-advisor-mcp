@@ -21,11 +21,28 @@ def test_reference_inventory_is_read_only_and_existing():
     assert result["references"]
     assert all(item["available"] for item in result["references"])
     names = {item["name"] for item in result["references"]}
-    assert {"nothing-design-skill", "oil-ui", "openui", "open-intelligent-ui"} <= names
+    assert {
+        "nothing-design-skill",
+        "oil-ui",
+        "flawless-ui-ux",
+        "astryx",
+        "doop",
+        "openui",
+        "open-intelligent-ui",
+    } <= names
     nothing = next(item for item in result["references"] if item["name"] == "nothing-design-skill")
     assert "opt-in" in nothing["description"].casefold()
     oil = next(item for item in result["references"] if item["name"] == "oil-ui")
     assert "oil ui" in oil["description"].casefold() or "multi-direction" in oil["description"].casefold()
+    flawless = next(item for item in result["references"] if item["name"] == "flawless-ui-ux")
+    assert "flawless" in flawless["description"].casefold()
+    astryx = next(item for item in result["references"] if item["name"] == "astryx")
+    assert "astryx" in astryx["description"].casefold()
+    doop = next(item for item in result["references"] if item["name"] == "doop")
+    assert "agpl" in doop["description"].casefold() or "canvas" in doop["description"].casefold()
+    assert doop["available"] is True
+    assert flawless["available"] is True
+    assert astryx["available"] is True
     openui = next(item for item in result["references"] if item["name"] == "openui")
     assert "not an html page template" in openui["description"].casefold()
 
@@ -51,7 +68,7 @@ def test_guidance_mentions_accessibility_and_untrusted_content():
     assert "untrusted data" in text
     assert "active_direction" not in guidance
     ids = [item["id"] for item in guidance["optional_directions"]]
-    assert ids == ["brand-refresh", "oil-ui", "nothing-design"]
+    assert ids == ["brand-refresh", "oil-ui", "flawless-ui-ux", "astryx", "nothing-design"]
 
 
 def test_guidance_activates_nothing_direction_only_on_explicit_request():
@@ -86,6 +103,32 @@ def test_guidance_activates_oil_ui_on_explicit_request():
     # Brand-refresh still wins over oil-ui when both are requested.
     both = server.get_design_guidance("Brand refresh keep brand; also use oil-ui")
     assert both["active_direction"]["id"] == "brand-refresh"
+
+
+def test_guidance_activates_flawless_on_explicit_request():
+    activated = server.get_design_guidance("Use flawless-ui-ux to redesign this dashboard")
+    assert activated["active_direction"]["id"] == "flawless-ui-ux"
+    principles = " ".join(activated["active_direction"]["principles"]).casefold()
+    assert "anti-slop" in principles or "product audience" in principles
+    assert "flawless-ui-ux" in activated["active_direction"]["local_sources"][0]
+    assert "active_direction" not in server.get_design_guidance("review this dashboard for accessibility")
+    # oil-ui wins over flawless when both are requested; brand-refresh still wins overall.
+    both = server.get_design_guidance("use oil-ui and also use flawless-ui-ux")
+    assert both["active_direction"]["id"] == "oil-ui"
+    brand = server.get_design_guidance("Brand refresh keep brand; also use flawless-ui-ux")
+    assert brand["active_direction"]["id"] == "brand-refresh"
+
+
+def test_guidance_activates_astryx_on_explicit_request():
+    activated = server.get_design_guidance("Use astryx theme cues for this product UI")
+    assert activated["active_direction"]["id"] == "astryx"
+    principles = " ".join(activated["active_direction"]["principles"]).casefold()
+    assert "look-don't-copy" in principles or "theme" in principles
+    assert "astryx" in activated["active_direction"]["local_sources"][0]
+    assert "active_direction" not in server.get_design_guidance("use a design system for this product UI")
+    # flawless wins over astryx when both are requested.
+    both = server.get_design_guidance("use flawless-ui-ux and also use astryx")
+    assert both["active_direction"]["id"] == "flawless-ui-ux"
 
 
 def test_missing_or_malformed_index_returns_no_records(tmp_path, monkeypatch):

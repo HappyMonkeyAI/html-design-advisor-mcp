@@ -77,6 +77,11 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Admit Footer Design and CTA Gallery as provenance-bounded section inspiration references; keep whole-page layouts preferred for structure.
 - [x] Add registry source rows and regression coverage so section refs surface for conversion/footer briefs without outranking layouts.
 
+## M12 — Astryx / Doop / flawless-ui-ux sibling review
+- [x] Review X post + local `astryx` / `doop` / `flawless-ui-ux`; record admit/decline in `docs/research/2026-11-09-astryx-doop-flawless-review.md`.
+- [x] Add inventory entries; opt-in `flawless-ui-ux` and `astryx` guidance packs; keep `doop` discovery-only.
+- [x] Cover opt-in triggers, priority vs brand-refresh/oil-ui, and non-trigger briefs in unit tests.
+
 ## Deferred pending explicit approval
 - [ ] Remote crawling, template downloads/import, writes into user projects, browser-based audits, HTTP/LAN transport, authentication, and deployment.
 
