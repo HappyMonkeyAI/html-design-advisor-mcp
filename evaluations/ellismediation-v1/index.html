@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="We offer mediation services across four categories: commercial, consumer, community and workplace. How can we help you?">
+  <meta name="theme-color" content="#d73881">
+  <title>Ellis Mediation | Experts In Mediation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --brand: #d73881;
+      --brand-deep: #b02a68;
+      --ink: #2a2a2a;
+      --muted: #555555;
+      --line: #e6e6e6;
+      --paper: #ffffff;
+      --soft: #f7f5f6;
+      --focus: #d73881;
+      --sans: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+      --measure: 70rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--brand); text-underline-offset: 0.18em; }
+    a:focus-visible, summary:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 30;
+      padding: 0.65rem 1rem;
+      transform: translateY(-160%);
+      background: var(--brand);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .wrap {
+      width: min(calc(100% - 2.5rem), var(--measure));
+      margin-inline: auto;
+    }
+
+    /* —— Header / menu —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgb(255 255 255 / 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .nav {
+      min-height: 4.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      text-decoration: none;
+    }
+    .logo img {
+      width: min(14rem, 52vw);
+      height: auto;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--brand);
+      background: white;
+      color: var(--brand);
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .menu > li {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .menu > li > a,
+    .menu > li > details {
+      display: flex;
+      align-items: center;
+    }
+    .menu > li > a,
+    .menu > li > details > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.85rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.2;
+      list-style: none;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      white-space: nowrap;
+    }
+    .menu > li > a:hover,
+    .menu > li > details > summary:hover { color: var(--brand); }
+    .menu summary { list-style: none; }
+    .menu summary::-webkit-details-marker { display: none; }
+    .menu summary::marker { content: ""; }
+    .menu summary::after {
+      content: "";
+      display: inline-block;
+      width: 0.4rem;
+      height: 0.4rem;
+      margin-left: 0.05rem;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-0.12rem);
+      opacity: 0.65;
+      flex: 0 0 auto;
+      transition: transform 0.15s ease;
+    }
+    details[open] > summary::after {
+      transform: rotate(225deg) translateY(-0.05rem);
+      opacity: 1;
+    }
+    .submenu {
+      position: absolute;
+      top: calc(100% + 0.35rem);
+      left: 0;
+      z-index: 25;
+      min-width: 14.5rem;
+      margin: 0;
+      padding: 0.45rem 0;
+      list-style: none;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.08);
+      display: none;
+    }
+    details[open] > .submenu { display: grid; }
+    .submenu a {
+      display: block;
+      padding: 0.55rem 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+    .submenu a:hover {
+      background: var(--soft);
+      color: var(--brand);
+    }
+    .menu .contact-cta > a {
+      margin-left: 0.55rem;
+      padding: 0.55rem 0.95rem;
+      border: 2px solid var(--brand);
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    .menu .contact-cta > a:hover {
+      background: var(--brand);
+      color: white;
+    }
+
+    /* —— Hero: copy + video —— */
+    .hero {
+      padding-block: clamp(2.2rem, 5vw, 3.4rem) clamp(2.5rem, 5vw, 3.8rem);
+      background:
+        linear-gradient(180deg, #fff 0%, #faf7f9 100%);
+    }
+    .hero-intro {
+      max-width: 46rem;
+      margin-bottom: 1.75rem;
+      animation: rise 0.7s ease both;
+    }
+    .hero-intro h1 {
+      margin: 0 0 1rem;
+      color: var(--brand);
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .hero-intro p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .hero-intro p:last-child { margin-bottom: 0; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin-top: 1.35rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      padding: 0.55rem 1.15rem;
+      border: 2px solid var(--brand);
+      background: var(--brand);
+      color: white;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .button:hover {
+      background: var(--brand-deep);
+      border-color: var(--brand-deep);
+      transform: translateY(-1px);
+    }
+    .button-ghost {
+      background: transparent;
+      color: var(--brand);
+    }
+    .button-ghost:hover {
+      background: var(--brand);
+      color: white;
+    }
+
+    .video-frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgb(42 42 42 / 0.12);
+      overflow: hidden;
+      text-decoration: none;
+      animation: rise 0.8s 0.08s ease both;
+    }
+    .video-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-frame .play {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 4.25rem;
+      height: 4.25rem;
+      border-radius: 50%;
+      background: rgb(215 56 129 / 0.92);
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.28);
+      display: grid;
+      place-items: center;
+    }
+    .video-frame .play::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0.7rem 0 0.7rem 1.15rem;
+      border-color: transparent transparent transparent white;
+      margin-left: 0.2rem;
+    }
+    .video-frame:hover .play { background: var(--brand-deep); }
+    .video-frame:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+    .video-caption {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(0.6rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— Sections —— */
+    section { scroll-margin-top: 5rem; }
+    .section { padding-block: clamp(3rem, 6vw, 4.75rem); }
+    .section-soft { background: var(--soft); }
+    .section h2 {
+      margin: 0 0 1rem;
+      color: var(--brand);
+      font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 28ch;
+    }
+    .section > .wrap > .lead,
+    .prose p {
+      color: var(--muted);
+      max-width: 48rem;
+    }
+    .prose p { margin: 0 0 1rem; }
+    .scope {
+      margin: 1.25rem 0 0;
+      padding: 0.95rem 1.1rem;
+      border-left: 4px solid var(--brand);
+      background: white;
+      color: var(--ink);
+      max-width: 48rem;
+    }
+
+    .advantages {
+      margin: 1.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      max-width: 52rem;
+    }
+    .advantages li {
+      display: grid;
+      grid-template-columns: minmax(8rem, 0.28fr) 1fr;
+      gap: 0.75rem 1.25rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .advantages strong {
+      color: var(--brand);
+      font-size: 1rem;
+    }
+    .advantages span { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+    .about-photo {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 0.4rem;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .about-photo figcaption {
+      margin: 0.55rem 0.2rem 0.2rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .about-copy h2 { margin-bottom: 0.35rem; }
+    .about-copy h3 {
+      margin: 0 0 1rem;
+      color: var(--brand);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem 2.25rem;
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .partners p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex: 1 1 12rem;
+    }
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem 1.75rem;
+    }
+    .partner-logos a {
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.92;
+      transition: opacity 0.2s ease;
+    }
+    .partner-logos a:hover { opacity: 1; }
+    .partner-logos img {
+      height: 2.4rem;
+      width: auto;
+      max-width: 9.5rem;
+      object-fit: contain;
+    }
+
+    .modes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem 2rem;
+      margin-top: 1.25rem;
+    }
+    .modes article {
+      padding: 1.2rem 0 0;
+      border-top: 3px solid var(--brand);
+    }
+    .modes h3 {
+      margin: 0 0 0.5rem;
+      color: var(--ink);
+      font-size: 1.1rem;
+    }
+    .modes p { margin: 0; color: var(--muted); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    .contact-list {
+      list-style: none;
+      margin: 1.25rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.95rem;
+    }
+    .contact-list li { display: grid; gap: 0.15rem; }
+    .contact-list span {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .contact-list a,
+    .contact-list strong {
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact-list a:hover { color: var(--brand); }
+    .contact-aside {
+      padding: 1.35rem 1.35rem 1.45rem;
+      background: white;
+      border: 1px solid var(--line);
+    }
+    .contact-aside p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding-block: 1.75rem 2.25rem;
+      border-top: 1px solid var(--line);
+      background: #1f1f1f;
+      color: #cfcfcf;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    .site-footer a { color: #fff; }
+    .footer-copy {
+      margin: 0 0 1rem;
+      color: #cfcfcf;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem 1.35rem;
+      margin: 0;
+    }
+    .footer-links a { text-underline-offset: 0.18em; }
+    .experiment-note {
+      margin: 1.15rem auto 0;
+      max-width: 46rem;
+      color: #9a9a9a;
+      font-size: 0.8rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1080px) {
+      .menu { flex-wrap: wrap; row-gap: 0.15rem; }
+      .menu > li > a,
+      .menu > li > details > summary { padding-inline: 0.65rem; font-size: 0.86rem; }
+      .menu .contact-cta > a { margin-left: 0.25rem; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle { display: inline-flex; }
+      .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 1.25rem 1rem;
+        background: white;
+        border-bottom: 1px solid var(--line);
+      }
+      .menu > li,
+      .menu > li > a,
+      .menu > li > details { width: 100%; }
+      .menu > li > a,
+      .menu > li > details > summary {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.75rem 0.35rem;
+        white-space: normal;
+      }
+      .site-header:has(.nav-toggle[aria-expanded="true"]) .menu,
+      .menu.is-open { display: flex; }
+      .submenu {
+        position: static;
+        box-shadow: none;
+        border: 0;
+        background: var(--soft);
+        margin: 0 0 0.35rem;
+      }
+      .menu .contact-cta > a {
+        margin: 0.5rem 0 0;
+        justify-content: center;
+        text-align: center;
+      }
+      .about-grid,
+      .contact-grid,
+      .modes,
+      .advantages li { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="logo" href="https://www.ellismediation.co.uk/">
+        <img
+          src="https://www.ellismediation.co.uk/wp-content/uploads/2021/07/cropped-ellismediation-logo-1.png"
+          width="934"
+          height="243"
+          alt="Ellis Mediation">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>Menu</button>
+      <nav aria-label="Primary">
+      <ul class="menu" id="site-menu">
+        <li><a href="https://www.ellismediation.co.uk/">Home</a></li>
+        <li>
+          <details>
+            <summary>Mediation</summary>
+            <ul class="submenu">
+              <li><a href="https://www.ellismediation.co.uk/mediation-services/commercial-mediation/">Commercial Mediation</a></li>
+              <li><a href="https://www.ellismediation.co.uk/mediation-services/consumer-mediation/">Consumer Mediation</a></li>
+              <li><a href="https://www.ellismediation.co.uk/mediation-services/community-mediation/">Community Mediation</a></li>
+              <li><a href="https://www.ellismediation.co.uk/mediation-services/workplace-mediation/">Workplace Mediation</a></li>
+              <li><a href="https://www.ellismediation.co.uk/feedback-from-clients/">Feedback from clients</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Case Studies</summary>
+            <ul class="submenu">
+              <li><a href="https://www.ellismediation.co.uk/case-studies/">Case Studies</a></li>
+              <li><a href="https://www.ellismediation.co.uk/case-studies/commercial-case-study/">Commercial Case Study</a></li>
+              <li><a href="https://www.ellismediation.co.uk/case-studies/consumer-case-study/">Consumer Case Study</a></li>
+              <li><a href="https://www.ellismediation.co.uk/case-studies/community-case-study/">Community Case Study</a></li>
+              <li><a href="https://www.ellismediation.co.uk/case-studies/workplace-case-study/">Workplace Case Study</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="https://www.ellismediation.co.uk/other-services/">Other Services</a></li>
+        <li><a href="https://www.ellismediation.co.uk/blog/">Blog</a></li>
+        <li class="contact-cta"><a href="https://www.ellismediation.co.uk/contact-us/">Contact Us</a></li>
+      </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-intro">
+          <h1 id="hero-title">What are we here for?</h1>
+          <p>Ellis Mediation is here to help everyone, whether a business, charity or an individual, to resolve a dispute without having to go to court.</p>
+          <p>What matters to us when we work with you? We want both parties to reach a settlement which is in the best interests of both parties. We aim to act with professional courtesy at all times, and always to listen more than we speak, as the only way that we learn about you and your dispute is by listening.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://www.ellismediation.co.uk/contact-us/">Contact Us</a>
+            <a class="button button-ghost" href="#why-mediation">Why mediation</a>
+          </div>
+        </div>
+
+        <a class="video-frame" href="https://youtu.be/Em3YwUuXEXs" rel="noopener noreferrer">
+          <img
+            src="https://i.ytimg.com/vi/Em3YwUuXEXs/maxresdefault.jpg"
+            width="1280"
+            height="720"
+            alt="Everything you need to know about mediation — video featuring Martin Ellis">
+          <span class="play" aria-hidden="true"></span>
+          <span class="visually-hidden">Play video: Everything you need to know about mediation</span>
+        </a>
+        <p class="video-caption">Same homepage video as the live site (<em>Everything you need to know about mediation</em>). Opens on YouTube — embeds are blocked from local <code>file://</code> previews.</p>
+      </div>
+    </section>
+
+    <section class="section" id="services-note" aria-labelledby="services-note-title">
+      <div class="wrap prose">
+        <h2 id="services-note-title">We offer commercial, consumer, community and workplace mediation.</h2>
+        <p class="scope"><strong>Apologies but we do not offer family mediation.</strong> Please follow the link at the very end of this page to see feedback from clients.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="why-mediation" aria-labelledby="why-title">
+      <div class="wrap">
+        <h2 id="why-title">What is mediation and why is it better than going to court?</h2>
+        <div class="prose">
+          <p>The basics of mediation are the same across all categories of mediation; a mediator is an independent person who works with two or more parties to help them resolve a dispute, without using legal processes involving courts.</p>
+          <p>We offer a free consultation so we can listen to your problem and discuss explain how mediation can help you avoid long and costly legal process, including going to court.</p>
+          <p>The advantages of mediation are:</p>
+        </div>
+        <ul class="advantages">
+          <li>
+            <strong>Cost</strong>
+            <span>Mediation is a much cheaper option compared to using solicitors or going to court. A mediation for a dispute value of £50,000 will cost each party £420, whereas using solicitors and going to court could cost you £10,000 or more.</span>
+          </li>
+          <li>
+            <strong>Speed</strong>
+            <span>Mediations can be completed in a few weeks from the first enquiry, compared to a wait of up to twelve months just to get to court.</span>
+          </li>
+          <li>
+            <strong>Confidentiality</strong>
+            <span>The whole mediation process is entirely confidential, so no-one else will know anything about the details of the case. If it goes to court, the details become public knowledge.</span>
+          </li>
+          <li>
+            <strong>Control</strong>
+            <span>The parties are in control, not the mediator, compared to going to court where solicitors have a habit of taking control from clients.</span>
+          </li>
+          <li>
+            <strong>Without prejudice</strong>
+            <span>Mediation is a safe space where the parties can talk openly with no concerns about the mediation discussions being referred to if the case ends up in court.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <figure class="about-photo">
+          <img
+            src="https://www.ellismediation.co.uk/wp-content/uploads/2022/01/EML-6-scaled-e1630092249168-1024x950-1.jpeg"
+            width="1024"
+            height="950"
+            alt="Martin Ellis, Managing Director of Ellis Mediation"
+            loading="lazy">
+          <figcaption>Martin Ellis — photo from the live Ellis Mediation site.</figcaption>
+        </figure>
+        <div class="about-copy prose">
+          <h2 id="about-title">About Us</h2>
+          <h3>Ellis Mediation</h3>
+          <p>Martin Ellis is the Managing Director of Ellis Mediation. He is a Chartered Accountant who moved into commercial, community and workplace mediation when he qualified as a mediator in 2019 after training with the Centre for Effective Dispute Resolution (CEDR). He is also qualified as a family mediator, but does not practice family mediation. He is also a non-executive director of the National Register of Public Sector Interpreters (NRPSI), Treasurer and Trustee of the British Nutrition Foundation (BNF) and a trustee of the Northampton Students Union (NSU).</p>
+          <div class="partners">
+            <p>Ellis Mediation is working with RETRA, Central Bedfordshire Council and Rated People.</p>
+            <div class="partner-logos">
+              <a href="https://www.retra.co.uk/" rel="noopener noreferrer">
+                <img src="https://www.ellismediation.co.uk/wp-content/uploads/2021/09/retra-300x124.png" width="300" height="124" alt="RETRA" loading="lazy">
+              </a>
+              <a href="https://www.centralbedfordshire.gov.uk/" rel="noopener noreferrer">
+                <img src="https://www.ellismediation.co.uk/wp-content/uploads/2021/09/Central-Bedfordshire-Council-logo-e1631646372793-300x109.jpg" width="300" height="109" alt="Central Bedfordshire Council - Working in partnership" loading="lazy">
+              </a>
+              <a href="https://www.ratedpeople.com/" rel="noopener noreferrer">
+                <img src="https://www.ellismediation.co.uk/wp-content/uploads/2021/10/ratedpeople-logo-768x125.png" width="768" height="125" alt="Rated People" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="meetings" aria-labelledby="meetings-title">
+      <div class="wrap">
+        <h2 id="meetings-title">Remote and face to face meetings available for all mediations</h2>
+        <p class="lead" style="color: var(--muted); max-width: 48rem;">It is assumed that most mediations will be done remotely online. Face to face mediations can be arranged at the same cost. Travelling distances of 20 miles each way or less will not be charged, but over 20 miles each way will be charged at £60 per hour or part thereof.</p>
+        <div class="modes">
+          <article>
+            <h3>Remote online</h3>
+            <p>Assumed for most mediations — same professional process, without unnecessary travel.</p>
+          </article>
+          <article>
+            <h3>Face to face</h3>
+            <p>Available at the same mediation cost, with travel charged only beyond 20 miles each way.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <h2 id="contact-title">Contact Us</h2>
+          <p style="color: var(--muted); max-width: 40rem; margin: 0;">We offer a free consultation so we can listen to your problem and discuss explain how mediation can help you avoid long and costly legal process, including going to court.</p>
+          <ul class="contact-list">
+            <li>
+              <span>Address</span>
+              <strong>144 Westbury Lane, Newport Pagnell, Bucks, MK16 8PT</strong>
+            </li>
+            <li>
+              <span>Phone</span>
+              <a href="tel:+447745849207">07745 849207</a>
+            </li>
+            <li>
+              <span>Email</span>
+              <a href="mailto:martin@ellismediation.co.uk">martin@ellismediation.co.uk</a>
+            </li>
+          </ul>
+        </div>
+        <aside class="contact-aside">
+          <p>Use the live enquiry form for callbacks and messages. This local concept does not submit forms.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://www.ellismediation.co.uk/contact-us/">Open contact form</a>
+            <a class="button button-ghost" href="https://www.ellismediation.co.uk/feedback-from-clients/">Feedback from clients</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-copy">Copyright Ellis Mediation 2021, Company Reg. No. 13535597. All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="https://www.ellismediation.co.uk/privacy-policy-2/">Privacy Policy</a>
+        <a href="https://www.ellismediation.co.uk/complaints-procedures/">Complaints Procedures</a>
+        <a href="https://www.ellismediation.co.uk/professional-advisors/">Professional Advisors</a>
+        <a href="https://www.ellismediation.co.uk/feedback-from-clients/">Feedback from clients</a>
+        <a href="https://www.linkedin.com/in/martin-ellis-fca-20b67133/">LinkedIn</a>
+        <a href="https://www.facebook.com/EllisMediationLimited">Facebook</a>
+      </div>
+      <p class="experiment-note">
+        Local design experiment only — not deployed and not an approved replacement.
+        Logo, video, Martin’s photograph and partner marks are hotlinked from the public live site for this mockup and remain Ellis Mediation / partner property.
+        Layout and styling are proposed; wording and destination links follow the live homepage.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector("[data-nav-toggle]");
+      const menu = document.getElementById("site-menu");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        menu.classList.toggle("is-open", !open);
+      });
+    })();
+  </script>
+</body>
+</html>

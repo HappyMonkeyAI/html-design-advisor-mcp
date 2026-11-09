@@ -7,9 +7,34 @@ This project is released under the [MIT License](LICENSE). The license covers th
 ## Initial scope
 
 - Read-only discovery over sibling projects under `../` (never edits them).
-- Reuse locally available references, especially `beautiful-html-templates`, `frontend-slides`, `ui`, `uilayouts`, `astro-spatial`, `liquid-dom`, `Kami`, and this workspace's `SKILL.md` / `spec.md`.
+- Reuse locally available references, especially `beautiful-html-templates`, `frontend-slides`, `ui`, `uilayouts`, `astro-spatial`, `liquid-dom`, `Kami`, opt-in `nothing-design-skill` / `oil-ui` / `flawless-ui-ux` / `astryx`, discovery-only `doop` plus gen-UI siblings `openui` / `open-intelligent-ui` (inventory only), and this workspace's `SKILL.md` / `spec.md`.
 - Curated external resource directory for html.design, Colorlib, TemplateMo, uiCookies, W3.CSS, and GitHub collections. External templates are not downloaded or redistributed automatically.
 - MCP tools for template search, project/reference inventory, and design guidance; resources for curated source/license notes and the local design brief.
+
+## Installation
+
+You can install the HTML Design Advisor MCP directly from the GitHub repository using the install scripts:
+
+**Linux/macOS:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/HappyMonkeyAI/html-design-advisor-mcp/master/install.ps1 | iex
+```
+
+After installation, add the MCP server to your MCP configuration:
+
+```json
+{
+    "name": "html-design-advisor",
+    "command": "python3",
+    "args": ["-m", "html_design_advisor"],
+    "env": {}
+}
+```
 
 ## Development
 
@@ -26,7 +51,7 @@ py -m venv .venv
 
 The default catalog workspace is the parent directory of this project. A fresh clone without the adjacent `beautiful-html-templates/index.json` catalog will still start; template search returns an empty catalog and linked website references remain available. Optional environment variables are `HTML_DESIGN_ADVISOR_WORKSPACE` (catalog workspace), `HTML_DESIGN_ADVISOR_TEMPLATE_INDEX` (index JSON path), and `HTML_DESIGN_ADVISOR_AUDIT_ROOT` (directory allowed for selected HTML reviews; defaults to this project directory). The index must resolve inside the configured workspace; paths outside it return no catalog entries. HTML review paths must resolve inside the audit root. Set variables before starting the process when using different locations.
 
-`recommend_design` ranks a small curated set of linked website layouts and interactive components alongside local slide-deck visual references. It weights page purpose, reports source and rights status, excludes known `avoid_for` conflicts, and returns `status=no_fit` with empty results when no candidate has meaningful overlap. The linked examples are metadata only: the server does not download or serve them. Their bundled assets remain uncleared. See `docs/research/2026-10-08-bookmark-reference-review.md` and `docs/research/2026-10-08-recommendation-baseline.md`. `audit_local_html` accepts one explicit `.html` or `.htm` path under the configured audit root, reads at most 1 MB as inert text, and reports heuristic source findings without executing scripts or returning page copy. It does not inspect linked stylesheets/assets or replace browser testing or a full accessibility audit.
+`recommend_design` ranks a small curated set of linked website layouts, section inspiration galleries (footer/CTA), and interactive components alongside local slide-deck visual references. It weights page purpose, reports source and rights status, excludes known `avoid_for` conflicts, and returns `status=no_fit` with empty results when no candidate has meaningful overlap. The linked examples are metadata only: the server does not download or serve them. Their bundled assets remain uncleared; inspiration galleries are look-don't-copy. See `docs/research/2026-10-08-bookmark-reference-review.md`, `docs/research/2026-11-08-section-inspiration-leads.md`, and `docs/research/2026-10-08-recommendation-baseline.md`. `audit_local_html` accepts one explicit `.html` or `.htm` path under the configured audit root, reads at most 1 MB as inert text, and reports heuristic source findings without executing scripts or returning page copy. It does not inspect linked stylesheets/assets or replace browser testing or a full accessibility audit.
 
 ## Safety and provenance
 

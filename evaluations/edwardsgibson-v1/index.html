@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Edwards Gibson is a dedicated legal recruitment consultancy specialising in private practice partner hires, team moves and in-house lawyer recruitment in London.">
+  <meta name="theme-color" content="#347b84">
+  <title>Edwards Gibson | Legal Recruitment Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --teal: #347b84;
+      --teal-deep: #2a646c;
+      --aqua: #33b3b9;
+      --ink: #1a1a1a;
+      --muted: #5a5a5a;
+      --line: #dde5e6;
+      --paper: #ffffff;
+      --soft: #f4f8f8;
+      --focus: #33b3b9;
+      --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
+      --measure: 72rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-underline-offset: 0.18em; }
+    a:focus-visible, summary:focus-visible, button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 40;
+      padding: 0.65rem 1rem;
+      transform: translateY(-160%);
+      background: var(--teal);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .wrap {
+      width: min(calc(100% - 2.5rem), var(--measure));
+      margin-inline: auto;
+    }
+
+    .topline {
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+    }
+    .topline-inner {
+      min-height: 2.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .topline a {
+      color: var(--teal);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .topline a:hover { text-decoration: underline; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgb(255 255 255 / 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .nav {
+      min-height: 4.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+    .logo img {
+      width: min(13.5rem, 48vw);
+      height: auto;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--teal);
+      background: white;
+      color: var(--teal);
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.85rem;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .menu > li { position: relative; display: flex; align-items: center; }
+    .menu > li > a,
+    .menu > li > details { display: flex; align-items: center; }
+    .menu > li > a,
+    .menu > li > details > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.75rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      list-style: none;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      white-space: nowrap;
+    }
+    .menu > li > a:hover,
+    .menu > li > details > summary:hover { color: var(--teal); }
+    .menu summary { list-style: none; }
+    .menu summary::-webkit-details-marker,
+    .menu summary::marker { display: none; content: ""; }
+    .menu summary::after {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-0.1rem);
+      opacity: 0.7;
+    }
+    details[open] > summary::after {
+      transform: rotate(225deg) translateY(-0.05rem);
+    }
+    .submenu {
+      position: absolute;
+      top: calc(100% + 0.25rem);
+      left: 0;
+      z-index: 40;
+      min-width: 14.5rem;
+      margin: 0;
+      padding: 0.4rem 0;
+      list-style: none;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 32px rgb(0 0 0 / 0.1);
+      display: none;
+    }
+    details[open] > .submenu { display: grid; }
+    .submenu a {
+      display: block;
+      padding: 0.55rem 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .submenu a:hover {
+      background: var(--soft);
+      color: var(--teal);
+    }
+    .menu .contact-cta > a {
+      margin-left: 0.35rem;
+      padding: 0.55rem 0.95rem;
+      background: var(--teal);
+      color: white;
+      font-weight: 700;
+    }
+    .menu .contact-cta > a:hover { background: var(--teal-deep); color: white; }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      color: white;
+      background: linear-gradient(135deg, #1f4f56 0%, var(--teal) 48%, #2f8f96 100%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgb(20 50 55 / 0.72) 0%, rgb(20 50 55 / 0.35) 48%, rgb(20 50 55 / 0.15) 100%),
+        url("https://edwardsgibson.com/images/skyline.png") right bottom / min(70%, 48rem) auto no-repeat;
+      opacity: 0.95;
+      z-index: -1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(14rem, 0.85fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: end;
+      padding-block: clamp(3rem, 7vw, 5rem);
+    }
+    .eyebrow {
+      margin: 0 0 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgb(255 255 255 / 0.82);
+    }
+    .hero h1 {
+      margin: 0 0 1rem;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .hero-lead {
+      margin: 0 0 1.5rem;
+      max-width: 36rem;
+      color: rgb(255 255 255 / 0.9);
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.9rem;
+      padding: 0.55rem 1.15rem;
+      border: 2px solid transparent;
+      background: var(--aqua);
+      color: #06343a;
+      font-weight: 800;
+      font-size: 0.86rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .button:hover { background: white; transform: translateY(-1px); }
+    .button-ghost {
+      background: transparent;
+      border-color: rgb(255 255 255 / 0.65);
+      color: white;
+    }
+    .button-ghost:hover { background: white; color: var(--teal-deep); }
+
+    .report-card {
+      display: grid;
+      gap: 0.85rem;
+      padding: 0.85rem;
+      background: rgb(255 255 255 / 0.1);
+      border: 1px solid rgb(255 255 255 / 0.22);
+      backdrop-filter: blur(4px);
+      text-decoration: none;
+      color: white;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .report-card:hover { transform: translateY(-3px); background: rgb(255 255 255 / 0.16); }
+    .report-card img {
+      width: 100%;
+      aspect-ratio: 1414 / 2000;
+      object-fit: cover;
+      background: #123;
+    }
+    .report-card strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+    .report-card span {
+      color: rgb(255 255 255 / 0.8);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    section { scroll-margin-top: 5rem; }
+    .section { padding-block: clamp(3rem, 6vw, 4.75rem); }
+    .section-soft { background: var(--soft); border-block: 1px solid var(--line); }
+    .section-kicker {
+      margin: 0 0 0.55rem;
+      color: var(--aqua);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--teal-deep);
+    }
+    .lead {
+      margin: 0 0 1.5rem;
+      max-width: 44rem;
+      color: var(--muted);
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+    .welcome-copy p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+    .welcome-photo {
+      border: 1px solid var(--line);
+      background: white;
+      overflow: hidden;
+    }
+    .welcome-photo img {
+      width: 100%;
+      aspect-ratio: 800 / 448;
+      object-fit: cover;
+    }
+    .welcome-photo figcaption {
+      margin: 0;
+      padding: 0.55rem 0.75rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      background: white;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    .news-list,
+    .article-list,
+    .role-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .news-list li,
+    .article-list li,
+    .role-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .news-list time {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--aqua);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .news-list a,
+    .article-list a,
+    .role-list a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .news-list a:hover,
+    .article-list a:hover,
+    .role-list a:hover { color: var(--teal); }
+    .role-list p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .more-link {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .more-link:hover { text-decoration: underline; }
+
+    .roles { background: var(--teal-deep); color: white; }
+    .roles h2,
+    .roles .section-kicker { color: white; }
+    .roles .lead { color: rgb(255 255 255 / 0.82); }
+    .roles .role-list { border-top-color: rgb(255 255 255 / 0.2); }
+    .roles .role-list li { border-bottom-color: rgb(255 255 255 / 0.2); }
+    .roles .role-list a { color: white; }
+    .roles .role-list a:hover { color: var(--aqua); }
+    .roles .role-list p { color: rgb(255 255 255 / 0.78); }
+    .roles .more-link { color: var(--aqua); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .team-card {
+      display: grid;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      background: white;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--aqua);
+    }
+    .team-card img {
+      width: 7.5rem;
+      height: 7.5rem;
+      margin-inline: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .team-card strong { font-size: 1.02rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    .contact-list {
+      list-style: none;
+      margin: 1.1rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .contact-list li { display: grid; gap: 0.15rem; }
+    .contact-list span {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .contact-list a,
+    .contact-list strong {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+    .contact-list a:hover { color: var(--teal); }
+    .contact-aside {
+      padding: 1.35rem 1.35rem 1.45rem;
+      background: var(--soft);
+      border-top: 4px solid var(--aqua);
+    }
+    .contact-aside p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding-block: 1.75rem 2.2rem;
+      background: #16383d;
+      color: #c7d5d7;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    .site-footer a { color: white; }
+    .footer-copy { margin: 0 0 1rem; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem 1.35rem;
+    }
+    .experiment-note {
+      margin: 1.15rem auto 0;
+      max-width: 48rem;
+      color: #8ea5a8;
+      font-size: 0.8rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .nav-toggle { display: inline-flex; }
+      .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 1.25rem 1rem;
+        background: white;
+        border-bottom: 1px solid var(--line);
+      }
+      .menu.is-open { display: flex; }
+      .menu > li,
+      .menu > li > a,
+      .menu > li > details,
+      .menu > li > details > summary { width: 100%; }
+      .menu > li > a,
+      .menu > li > details > summary {
+        justify-content: space-between;
+        white-space: normal;
+        padding: 0.75rem 0.25rem;
+      }
+      .submenu { position: static; box-shadow: none; border: 0; background: var(--soft); }
+      .menu .contact-cta > a { margin: 0.4rem 0 0; justify-content: center; }
+      .hero-grid,
+      .welcome-grid,
+      .split-grid,
+      .contact-grid,
+      .team-grid { grid-template-columns: 1fr; }
+      .hero::before { background-size: min(100%, 36rem) auto; opacity: 0.55; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topline">
+    <div class="wrap topline-inner">
+      <a href="https://edwardsgibson.com/">Informed Connections</a>
+      <a href="tel:+442071534903">+44 (0) 20 7153 4903</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="logo" href="https://edwardsgibson.com/">
+        <img src="https://edwardsgibson.com/images/logo.png" width="500" height="158" alt="Edwards Gibson Logo">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-nav-toggle>Menu</button>
+      <nav aria-label="Primary">
+        <ul class="menu" id="site-menu">
+          <li><a href="https://edwardsgibson.com/">Home</a></li>
+          <li>
+            <details>
+              <summary>What We Do</summary>
+              <ul class="submenu">
+                <li><a href="https://edwardsgibson.com/partner-representation">Partner Representation</a></li>
+                <li><a href="https://edwardsgibson.com/team-moves">Team Moves</a></li>
+                <li><a href="https://edwardsgibson.com/in-house">In-House</a></li>
+                <li><a href="https://edwardsgibson.com/search">Retained Search</a></li>
+                <li><a href="https://edwardsgibson.com/live-search">Search Live Roles</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Publications</summary>
+              <ul class="submenu">
+                <li><a href="https://edwardsgibson.com/partner-moves">Partner Moves</a></li>
+                <li><a href="https://edwardsgibson.com/articles">Articles</a></li>
+                <li><a href="https://edwardsgibson.com/news-events">News &amp; Events</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="https://edwardsgibson.com/placement-history">Our Placement History</a></li>
+          <li><a href="https://edwardsgibson.com/meet-the-team">Meet The Team</a></li>
+          <li class="contact-cta"><a href="https://edwardsgibson.com/contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Legal recruitment consultancy</p>
+        <h1 id="hero-title">Welcome to Edwards Gibson</h1>
+        <p class="hero-lead">Based in the heart of the City of London, Edwards Gibson specialises in private practice partner hires, team moves and in-house lawyer recruitment.</p>
+        <div class="actions">
+          <a class="button" href="https://edwardsgibson.com/live-search">Search Live Roles</a>
+          <a class="button button-ghost" href="https://edwardsgibson.com/partner-moves">Partner Moves report</a>
+        </div>
+      </div>
+      <a class="report-card" href="https://edwardsgibson.com/partner-moves">
+        <img
+          src="https://edwardsgibson.com/uploads/202609011014-Copy%20of%20Copy%20of%20Copy%20of%20Jul-Aug%20cover.jpg"
+          width="1414"
+          height="2000"
+          alt="Law Firm Partner Moves in London - Issue 94">
+        <div>
+          <span>July – August 2026</span>
+          <strong>Law Firm Partner Moves in London — Issue 94</strong>
+          <span>Click to read our latest report »</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section" id="welcome" aria-labelledby="welcome-title">
+      <div class="wrap welcome-grid">
+        <div class="welcome-copy">
+          <p class="section-kicker">About</p>
+          <h2 id="welcome-title">Depth and clarity of information.</h2>
+          <p>Based in the heart of the City of London, Edwards Gibson is a dedicated legal recruitment consultancy specialising in private practice partner hires, team moves and in-house lawyer recruitment.</p>
+          <p>We pride ourselves on the depth and clarity of information we provide and have an unrivalled knowledge of the markets in which we work.</p>
+          <div class="actions">
+            <a class="button" href="https://edwardsgibson.com/partner-representation" style="background: var(--teal); color: white;">Partner Representation</a>
+            <a class="button" href="https://edwardsgibson.com/team-moves" style="background: white; border-color: var(--teal); color: var(--teal);">Team Moves</a>
+          </div>
+        </div>
+        <figure class="welcome-photo">
+          <img src="https://edwardsgibson.com/images/building.jpg" width="800" height="448" alt="City of London building exterior" loading="lazy">
+          <figcaption>Image from the live Edwards Gibson homepage.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="publications" aria-labelledby="publications-title">
+      <div class="wrap">
+        <p class="section-kicker">Publications</p>
+        <h2 id="publications-title">News, events and articles.</h2>
+        <div class="split-grid">
+          <div>
+            <h3 style="margin:0 0 0.75rem; color: var(--teal-deep);">News &amp; Events</h3>
+            <ul class="news-list">
+              <li>
+                <time datetime="2026-10">Oct 2026</time>
+                <a href="https://edwardsgibson.com/news-events">Forbes cites Edwards Gibson analysis on the rule of law and the business of Big Law</a>
+              </li>
+              <li>
+                <time datetime="2026-07">Jul 2026</time>
+                <a href="https://edwardsgibson.com/news-events">Financial Times article extensively features Edwards Gibson Director on record partner pay at leading UK law firms</a>
+              </li>
+              <li>
+                <time datetime="2026-07">Jul 2026</time>
+                <a href="https://edwardsgibson.com/news-events">Financial News cites Edwards Gibson data in article: ‘Which law firms have lost the most London partners this year?’</a>
+              </li>
+              <li>
+                <time datetime="2026-05">May 2026</time>
+                <a href="https://edwardsgibson.com/news-events">Financial Times features Edwards Gibson in special report: “AI legal-tech start-ups’ alternative career path for lawyers”</a>
+              </li>
+            </ul>
+            <a class="more-link" href="https://edwardsgibson.com/news-events">More news &amp; events »</a>
+          </div>
+          <div>
+            <h3 style="margin:0 0 0.75rem; color: var(--teal-deep);">Articles</h3>
+            <ul class="article-list">
+              <li><a href="https://edwardsgibson.com/articles">WilmerHale - The Born Defection</a></li>
+              <li><a href="https://edwardsgibson.com/articles">Pre-merger paradox – some atypical hiring</a></li>
+              <li><a href="https://edwardsgibson.com/articles">Uno Reverse - Kirkland vs Paul Weiss</a></li>
+              <li><a href="https://edwardsgibson.com/articles">The maybe (not-so) inviolate Slaughter and May</a></li>
+              <li><a href="https://edwardsgibson.com/articles">What’s behind the escalating three-year bull run in Big Law Partner Hires in London and is it sustainable?</a></li>
+            </ul>
+            <a class="more-link" href="https://edwardsgibson.com/articles">More articles »</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section roles" id="roles" aria-labelledby="roles-title">
+      <div class="wrap">
+        <p class="section-kicker">Opportunities</p>
+        <h2 id="roles-title">Featured Roles</h2>
+        <p class="lead">A selection of current partner and senior opportunities. Browse the full live search on the Edwards Gibson site.</p>
+        <ul class="role-list">
+          <li>
+            <a href="https://edwardsgibson.com/live-search">Real Estate Finance Lawyer, Partner c. £2 million+</a>
+            <p>US/Global law firm with nimble, cross-border, investor-focused REF offering</p>
+          </li>
+          <li>
+            <a href="https://edwardsgibson.com/live-search">Real Estate Finance lawyer - Back-Leverage focus – Leading UK Firm – London to £850,000</a>
+            <p>Top UK firm seeking a partner with lender-side back-leverage expertise to establish and lead a dedicated back-leverage practice.</p>
+          </li>
+          <li>
+            <a href="https://edwardsgibson.com/live-search">Energy Disputes Lawyer – Equity Partner (Oil &amp; Gas), London to £1m</a>
+            <p>Strategic senior hire for an oil &amp; gas energy disputes partner to help steer a globally integrated practice.</p>
+          </li>
+          <li>
+            <a href="https://edwardsgibson.com/live-search">Private Funds lawyer, Partner c. £5 million</a>
+            <p>Elite US law firm with leading stateside private funds team.</p>
+          </li>
+          <li>
+            <a href="https://edwardsgibson.com/live-search">Commercial International Arbitration Lawyer, Partner, US Firm to $2.5m</a>
+            <p>A leading global disputes firm with a reputation as 'one of the good guys'.</p>
+          </li>
+          <li>
+            <a href="https://edwardsgibson.com/live-search">In-House Family Office General Counsel, to £300,000</a>
+            <p>Senior Private Client Tax Lawyer | Single Family Office</p>
+          </li>
+        </ul>
+        <a class="more-link" href="https://edwardsgibson.com/live-search">Search all live roles »</a>
+      </div>
+    </section>
+
+    <section class="section" id="team" aria-labelledby="team-title">
+      <div class="wrap">
+        <p class="section-kicker">People</p>
+        <h2 id="team-title">Meet The Team</h2>
+        <p class="lead">Connect with the consultants behind Informed Connections.</p>
+        <div class="team-grid">
+          <a class="team-card" href="https://edwardsgibson.com/meet-the-team">
+            <img src="https://edwardsgibson.com/images/team/scott.jpg" width="157" height="157" alt="Scott Gibson" loading="lazy">
+            <strong>Scott Gibson</strong>
+          </a>
+          <a class="team-card" href="https://edwardsgibson.com/meet-the-team">
+            <img src="https://edwardsgibson.com/images/team/sloane.jpg" width="157" height="157" alt="Sloane Poulton" loading="lazy">
+            <strong>Sloane Poulton</strong>
+          </a>
+          <a class="team-card" href="https://edwardsgibson.com/meet-the-team">
+            <img src="https://edwardsgibson.com/images/team/jon.jpg" width="157" height="157" alt="Jon Vivian" loading="lazy">
+            <strong>Jon Vivian</strong>
+          </a>
+        </div>
+        <a class="more-link" href="https://edwardsgibson.com/meet-the-team">Full team profiles »</a>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">Start a confidential conversation.</h2>
+          <p class="lead">Whether you are exploring a partner move, a team hire or an in-house brief, we can help with clear market information.</p>
+          <ul class="contact-list">
+            <li>
+              <span>Phone</span>
+              <a href="tel:+442071534903">+44 (0) 20 7153 4903</a>
+            </li>
+            <li>
+              <span>Location</span>
+              <strong>City of London</strong>
+            </li>
+          </ul>
+        </div>
+        <aside class="contact-aside">
+          <p>Use the live contact page for enquiries. This local concept does not submit forms.</p>
+          <div class="actions">
+            <a class="button" href="https://edwardsgibson.com/contact" style="background: var(--teal); color: white;">Contact Us</a>
+            <a class="button" href="https://edwardsgibson.com/placement-history" style="background: white; border-color: var(--teal); color: var(--teal);">Placement History</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-copy">Edwards Gibson | Legal Recruitment Consultancy</p>
+      <div class="footer-links">
+        <a href="https://edwardsgibson.com/partner-representation">Partner Representation</a>
+        <a href="https://edwardsgibson.com/live-search">Live Roles</a>
+        <a href="https://edwardsgibson.com/partner-moves">Partner Moves</a>
+        <a href="https://edwardsgibson.com/meet-the-team">Meet The Team</a>
+        <a href="https://edwardsgibson.com/contact">Contact Us</a>
+      </div>
+      <p class="experiment-note">
+        Local design experiment only — not deployed and not an approved replacement.
+        Logo, publication cover, skyline, building and team photographs are hotlinked from the public live site for this mockup and remain Edwards Gibson property.
+        Layout and styling are proposed; wording and destinations follow the live homepage.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector("[data-nav-toggle]");
+      const menu = document.getElementById("site-menu");
+      if (!toggle || !menu) return;
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        menu.classList.toggle("is-open", !open);
+      });
+    })();
+  </script>
+</body>
+</html>

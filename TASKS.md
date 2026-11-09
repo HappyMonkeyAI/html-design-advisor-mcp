@@ -57,6 +57,31 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Direct MCP SDK smoke: discover five tools/two resources, call every tool, read both resources.
 - [x] Keep client-specific registration outside the project contract; document the stdio launch command in README.
 
+## M8 — Sibling inventory and opt-in direction pack
+- [x] Add `nothing-design-skill`, `openui`, and `open-intelligent-ui` to `list_design_references` with scope-accurate descriptions.
+- [x] Extend `get_design_guidance` with optional-direction metadata; activate Nothing-inspired cues only on explicit brief phrases.
+- [x] Cover inventory labels and opt-in vs non-trigger briefs in unit tests; keep gen-UI siblings out of `recommend_design` seeds.
+
+## M9 — Ranking quality and brand-refresh guidance
+- [x] Prefer website/interactive references in `recommendations`; move slide decks to `visual_mood_seeds` with `matched` / `mood_only` / `no_fit` status.
+- [x] Boost website purpose/audience scoring and widen Startup/Architect purpose tags for local/family/leisure/professional services briefs.
+- [x] Add opt-in `brand-refresh` guidance pack; prefer it over Nothing when both are requested.
+- [x] Regression tests for Ellis-like services brief and Rewlea-like leisure/family brief.
+
+## M10 — Oil UI sibling inventory and opt-in pack
+- [x] Add `oil-ui` to `list_design_references` with scope-accurate description.
+- [x] Add opt-in `oil-ui` guidance pack; brand-refresh still wins when both are requested; generic “explore directions” does not auto-trigger.
+
+## M11 — Section inspiration galleries (footer / CTA)
+- [x] Research X roundup + `.215` bookmark dispositions + `.80` article-research topics; record admit/decline in `docs/research/2026-11-08-section-inspiration-leads.md`.
+- [x] Admit Footer Design and CTA Gallery as provenance-bounded section inspiration references; keep whole-page layouts preferred for structure.
+- [x] Add registry source rows and regression coverage so section refs surface for conversion/footer briefs without outranking layouts.
+
+## M12 — Astryx / Doop / flawless-ui-ux sibling review
+- [x] Review X post + local `astryx` / `doop` / `flawless-ui-ux`; record admit/decline in `docs/research/2026-11-09-astryx-doop-flawless-review.md`.
+- [x] Add inventory entries; opt-in `flawless-ui-ux` and `astryx` guidance packs; keep `doop` discovery-only.
+- [x] Cover opt-in triggers, priority vs brand-refresh/oil-ui, and non-trigger briefs in unit tests.
+
 ## Deferred pending explicit approval
 - [ ] Remote crawling, template downloads/import, writes into user projects, browser-based audits, HTTP/LAN transport, authentication, and deployment.
 
@@ -69,7 +94,8 @@ Status legend: `[x]` verified complete; `[ ]` pending. Keep this execution board
 - [x] Reuse one image from the existing homepage gallery by source URL and add two dated public reviews with reviewer attribution.
 - [x] Fix owner-reported testimonial date contrast/alignment and align work-row copy; verify at desktop and mobile sizes.
 - [x] Owner authorized including this evaluation in the public repository; retain source links and reviewer attribution, and label the image and reviews as material from the current public site rather than original project assets.
-- [ ] Get owner/representative feedback and test an alternative design direction before claiming the redesign is preferred.
+- [x] Test an alternative design direction (`evaluations/stephenphillips-v2/` keep-brand refresh vs v1 editorial); comparison sheet at `evaluations/COMPARISON-stephenphillips.md`.
+- [x] Owner preferred **v1** over v2 (2026-11-09) as the stronger local concept direction; recorded in the comparison sheet. Not a live-site replacement approval.
 - [x] Improve MCP candidate ranking based on both observed mismatches; current brief comparison and limits are recorded in `docs/research/2026-10-08-recommendation-baseline.md`.
 - [x] Repeat the local-only evaluation with HappyMonkey.AI at the owner's request; record actual MCP output, prototype and checks in `evaluations/happymonkey-v1/`.
 
