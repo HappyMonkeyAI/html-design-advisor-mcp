@@ -41,10 +41,30 @@ if ([int]$major -lt 3 -or ([int]$major -eq 3 -and [int]$minor -lt 11)) {
 
 Write-Host "✅ Python $versionOutput found"
 
-# Install the package from GitHub
+# Install into a dedicated user-level virtual environment so pip never targets
+# a shared or externally managed interpreter (PEP 668).
+Write-Host "Creating virtual environment in $env:LOCALAPPDATA\html-design-advisor\venv..."
+$VenvDir = Join-Path $env:LOCALAPPDATA "html-design-advisor\venv"
+New-Item -ItemType Directory -Force -Path (Split-Path $VenvDir) | Out-Null
+
+& $pythonCmd -m venv $VenvDir
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Could not create a virtual environment." -ForegroundColor Red
+    exit 1
+}
+
+$venvPython = Join-Path $VenvDir "Scripts\python.exe"
 Write-Host "Installing HTML Design Advisor MCP from GitHub..."
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install "git+https://github.com/HappyMonkeyAI/html-design-advisor-mcp.git@master"
+& $venvPython -m pip install --upgrade pip setuptools wheel
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Failed to prepare pip in the virtual environment." -ForegroundColor Red
+    exit 1
+}
+& $venvPython -m pip install --upgrade "git+https://github.com/HappyMonkeyAI/html-design-advisor-mcp.git@master"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Package installation failed." -ForegroundColor Red
+    exit 1
+}
 
 Write-Host ""
 Write-Host "=======================================" -ForegroundColor Green
@@ -53,12 +73,16 @@ Write-Host "=======================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "To use the HTML Design Advisor MCP, add it to your MCP configuration:" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Server configuration:" -ForegroundColor White
-Write-Host '  {
+$configPython = $venvPython.Replace('\', '\\')
+$configJson = @"
+  {
     "name": "html-design-advisor",
-    "command": "python",
+    "command": "$configPython",
     "args": ["-m", "html_design_advisor"],
     "env": {}
-  }' -ForegroundColor Gray
+  }
+"@
+Write-Host "Server configuration:" -ForegroundColor White
+Write-Host $configJson -ForegroundColor Gray
 Write-Host ""
 Write-Host "For more information, visit: $REPO_URL" -ForegroundColor Cyan

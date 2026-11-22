@@ -36,6 +36,8 @@ After installation, add the MCP server to your MCP configuration:
 }
 ```
 
+The install scripts create a user-level virtual environment and print the configuration for it; use the printed `command` path in place of the `python3` example above.
+
 ## Development
 
 Python 3.11+ recommended. Install with `python -m pip install -e '.[test]'` and launch with `python -m html_design_advisor`. The server uses stdio transport and read-only local filesystem access.

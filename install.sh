@@ -29,16 +29,23 @@ fi
 
 echo "✅ Python $PYTHON_VERSION found"
 
-# Check for pip
-if ! python3 -m pip --version &> /dev/null; then
-    echo "❌ pip is not installed. Please ensure pip is available with Python."
+# Install into a dedicated user-level virtual environment so pip never targets
+# an externally managed system interpreter (PEP 668).
+DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+VENV_DIR="$DATA_HOME/html-design-advisor/venv"
+mkdir -p "$(dirname "$VENV_DIR")"
+
+echo "Creating virtual environment in $VENV_DIR..."
+if ! python3 -m venv "$VENV_DIR"; then
+    echo "❌ Could not create a virtual environment."
+    echo "On Debian/Ubuntu, install the venv package (sudo apt install python3-venv) and retry."
     exit 1
 fi
 
 # Install the package from GitHub
 echo "Installing HTML Design Advisor MCP from GitHub..."
-python3 -m pip install --upgrade pip setuptools wheel
-python3 -m pip install "git+https://github.com/HappyMonkeyAI/html-design-advisor-mcp.git@master"
+"$VENV_DIR/bin/python" -m pip install --upgrade pip setuptools wheel
+"$VENV_DIR/bin/python" -m pip install --upgrade "git+https://github.com/HappyMonkeyAI/html-design-advisor-mcp.git@master"
 
 echo ""
 echo "======================================="
@@ -48,11 +55,11 @@ echo ""
 echo "To use the HTML Design Advisor MCP, add it to your MCP configuration:"
 echo ""
 echo "Server configuration:"
-echo '  {
-    "name": "html-design-advisor",
-    "command": "python3",
-    "args": ["-m", "html_design_advisor"],
-    "env": {}
-  }'
+echo "  {
+    \"name\": \"html-design-advisor\",
+    \"command\": \"$VENV_DIR/bin/python\",
+    \"args\": [\"-m\", \"html_design_advisor\"],
+    \"env\": {}
+  }"
 echo ""
 echo "For more information, visit: $REPO_URL"
